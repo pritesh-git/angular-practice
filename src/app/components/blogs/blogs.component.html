@@ -1,0 +1,31 @@
+<!-- Blog Modal Component -->
+<app-blog-modal (blogAdded)="onBlogAdded()"></app-blog-modal>
+
+<!-- Blog Grid -->
+<div class="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4 p-4">
+  @for (blog of blogsList; track $index) {
+    <article
+      class="overflow-hidden rounded-lg shadow-xl transition hover:shadow-2xl"
+    >
+      <img
+        alt="blog-image"
+        [src]="blog.blog_image"
+        class="h-40 w-full object-cover"
+      />
+
+      <div class="bg-white p-4 sm:p-6">
+        <h3 class="mt-0.5 text-lg text-gray-900">{{ blog.title }}</h3>
+
+        <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+          {{ blog.description }}
+        </p>
+      </div>
+    </article>
+  } @empty {
+    <div
+      class="py-3 text-center border-2 border-dashed border-gray-300 rounded-lg text-gray-500"
+    >
+      No Cards to render!
+    </div>
+  }
+</div>
