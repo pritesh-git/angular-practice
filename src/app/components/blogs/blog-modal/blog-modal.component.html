@@ -3,8 +3,7 @@
   <div class="flex justify-center my-20">
     <button
       class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-      (click)="openModal()"
-    >
+      (click)="openModal()">
       Create Blog
     </button>
   </div>
@@ -13,13 +12,11 @@
 <!-- Modal -->
 <div
   *ngIf="isModalOpen"
-  class="fixed inset-0 z-50 flex items-center justify-center"
->
+  class="fixed inset-0 z-50 flex items-center justify-center">
   <!-- Modal Backdrop with click handler -->
   <div
     class="absolute inset-0 bg-black bg-opacity-50"
-    (click)="closeModal()"
-  ></div>
+    (click)="closeModal()"></div>
 
   <!-- Modal Content -->
   <div class="relative w-full max-w-lg mx-4 z-10">
@@ -29,20 +26,17 @@
         <button
           type="button"
           class="text-gray-400 hover:text-gray-500"
-          (click)="closeModal()"
-        >
+          (click)="closeModal()">
           <svg
             class="w-6 h-6"
             fill="none"
             stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+            viewBox="0 0 24 24">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
+              d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
@@ -50,14 +44,12 @@
       <form
         class="blog-form"
         #blogForm="ngForm"
-        (ngSubmit)="onBlogSubmit(blogForm)"
-      >
+        (ngSubmit)="onBlogSubmit(blogForm)">
         <div class="p-4">
           <div class="mb-4">
             <label
               for="title"
-              class="block text-sm font-medium text-gray-700 mb-1"
-            >
+              class="block text-sm font-medium text-gray-700 mb-1">
               Title
             </label>
             <input
@@ -67,12 +59,10 @@
               #title="ngModel"
               [(ngModel)]="blogData.title"
               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-              placeholder="Enter desired title"
-            />
+              placeholder="Enter desired title" />
             <div
               class="mt-1 text-sm text-red-600"
-              *ngIf="title.invalid && title.touched"
-            >
+              *ngIf="title.invalid && title.touched">
               Title is required and must be valid.
             </div>
           </div>
@@ -80,8 +70,7 @@
           <div class="mb-4">
             <label
               for="description"
-              class="block text-sm font-medium text-gray-700 mb-1"
-            >
+              class="block text-sm font-medium text-gray-700 mb-1">
               Description
             </label>
             <textarea
@@ -91,12 +80,10 @@
               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 resize-none"
               #description="ngModel"
               [(ngModel)]="blogData.description"
-              placeholder="Enter desired description"
-            ></textarea>
+              placeholder="Enter desired description"></textarea>
             <div
               *ngIf="description.invalid && description.touched"
-              class="mt-1 text-sm text-red-600"
-            >
+              class="mt-1 text-sm text-red-600">
               Description is required and must be valid.
             </div>
           </div>
@@ -104,8 +91,7 @@
           <div>
             <label
               for="formFile"
-              class="block text-sm font-medium text-gray-700 mb-1"
-            >
+              class="block text-sm font-medium text-gray-700 mb-1">
               Blog image
             </label>
             <input
@@ -116,15 +102,13 @@
               accept="image/*"
               ngModel
               (change)="onBlogImageSelect($event)"
-              required
-            />
+              required />
             @if (blogData.blog_image) {
               <div class="flex justify-center pt-3">
                 <img
                   src="{{ blogData.blog_image }}"
                   class="w-20 h-20 object-cover"
-                  alt="image preview"
-                />
+                  alt="image preview" />
               </div>
             }
           </div>
@@ -142,20 +126,17 @@
               'bg-gray-300 hover:bg-gray-300 cursor-not-allowed':
                 isSubmitDisabled,
             }"
-            class="px-4 py-2 text-sm font-semibold text-white rounded-md transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-sm"
-          >
+            class="px-4 py-2 text-sm font-semibold text-white rounded-md transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-sm">
             <span class="flex items-center gap-2">
               <svg
                 *ngIf="!isSubmitDisabled"
                 class="w-4 h-4"
                 viewBox="0 0 20 20"
-                fill="currentColor"
-              >
+                fill="currentColor">
                 <path
                   fill-rule="evenodd"
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clip-rule="evenodd"
-                />
+                  clip-rule="evenodd" />
               </svg>
               Submit
             </span>
@@ -165,15 +146,13 @@
           <button
             type="button"
             (click)="onResetForm(blogForm)"
-            class="px-4 py-2 text-sm font-semibold text-gray-700 bg-white rounded-md border border-gray-300 hover:bg-gray-50 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 shadow-sm"
-          >
+            class="px-4 py-2 text-sm font-semibold text-gray-700 bg-white rounded-md border border-gray-300 hover:bg-gray-50 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 shadow-sm">
             <span class="flex items-center gap-2">
               <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
                 <path
                   fill-rule="evenodd"
                   d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
-                  clip-rule="evenodd"
-                />
+                  clip-rule="evenodd" />
               </svg>
               Reset
             </span>

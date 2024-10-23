@@ -1,8 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BlogModalComponent } from './blog-modal/blog-modal.component';
-import { CommonModule } from '@angular/common';
-import { BlogData, BlogService } from '../../service/Blog/blog.service';
-import { Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core'
+import { BlogModalComponent } from './blog-modal/blog-modal.component'
+import { CommonModule } from '@angular/common'
+import { BlogData, BlogService } from '../../service/Blog/blog.service'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'app-blogs',
@@ -12,29 +12,29 @@ import { Subscription } from 'rxjs';
   styleUrl: './blogs.component.scss',
 })
 export class BlogsComponent implements OnInit, OnDestroy {
-  blogsList: BlogData[] = [];
-  private storageSubscription: Subscription | undefined;
+  blogsList: BlogData[] = []
+  private storageSubscription: Subscription | undefined
 
   constructor(private blogService: BlogService) {}
 
   ngOnInit() {
-    this.loadBlogs();
+    this.loadBlogs()
     this.storageSubscription = this.blogService.storageChange$.subscribe(() => {
-      this.loadBlogs();
-    });
+      this.loadBlogs()
+    })
   }
 
   ngOnDestroy() {
     if (this.storageSubscription) {
-      this.storageSubscription.unsubscribe();
+      this.storageSubscription.unsubscribe()
     }
   }
 
   loadBlogs() {
-    this.blogsList = this.blogService.getBlogs();
+    this.blogsList = this.blogService.getBlogs()
   }
 
   onBlogAdded() {
-    this.loadBlogs();
+    this.loadBlogs()
   }
 }

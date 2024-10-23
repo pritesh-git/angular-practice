@@ -1,10 +1,10 @@
-import { Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { HomeComponent } from './components/home/home.component';
-import { AuthGuard } from './auth.guard';
-import { BlogsComponent } from './components/blogs/blogs.component';
-import { InvalidPageComponent } from './components/invalid-page/invalid-page.component';
-import { DataRenderingComponent } from './components/data-rendering/data-rendering.component';
+import { Routes } from '@angular/router'
+import { LoginComponent } from './components/login/login.component'
+import { HomeComponent } from './components/home/home.component'
+import { AuthGuard } from './auth.guard'
+import { BlogsComponent } from './components/blogs/blogs.component'
+import { InvalidPageComponent } from './components/invalid-page/invalid-page.component'
+import { DataRenderingComponent } from './components/data-rendering/data-rendering.component'
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,7 +17,7 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: '**', component: InvalidPageComponent },
-];
+]
 
 // Lazy loading approch
 // {path:'home', loadComponent:()=>import('./components/home/home.component').then(c=>c.HomeComponent)}
