@@ -1,0 +1,49 @@
+<table border="1" class="data-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Website</th>
+      <th>Company</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (user of this.userList; track user.id) {
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <div>
+            <p><strong>Street:</strong> {{ user.address.street }}</p>
+            <p><strong>Suite:</strong> {{ user.address.suite }}</p>
+            <p><strong>City:</strong> {{ user.address.city }}</p>
+            <p><strong>Zipcode:</strong> {{ user.address.zipcode }}</p>
+            <p>
+              <strong>Geo:</strong> Lat: {{ user.address.geo.lat }}, Lng:
+              {{ user.address.geo.lng }}
+            </p>
+          </div>
+        </td>
+        <td>{{ user.phone }}</td>
+        <td>
+          <a href="http://{{ user.website }}" target="_blank">{{
+            user.website
+          }}</a>
+        </td>
+        <td>
+          <div>
+            <p><strong>Name:</strong> {{ user.company.name }}</p>
+            <p><strong>Catchphrase:</strong> {{ user.company.catchPhrase }}</p>
+            <p><strong>BS:</strong> {{ user.company.bs }}</p>
+          </div>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

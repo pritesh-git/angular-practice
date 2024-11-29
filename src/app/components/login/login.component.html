@@ -1,0 +1,55 @@
+<div class="flex items-center justify-center h-[85vh]">
+  <form
+    class="border p-4 bg-gray-50 rounded-md w-[400px] shadow-2xl"
+    #loginForm="ngForm"
+    (ngSubmit)="onSubmit(loginForm)">
+    <h3 class="w-full text-center font-semibold text-2xl">Login</h3>
+
+    <label for="UserEmail" class="block font-medium text-gray-700">
+      Email address</label
+    >
+    <input
+      email
+      required
+      type="email"
+      name="email"
+      #email="ngModel"
+      [(ngModel)]="login.email"
+      placeholder="abc@example.com"
+      class="mt-1 w-full border-2 rounded-md px-3 py-2 shadow-sm outline-none" />
+    <div *ngIf="email.invalid && email.touched" class="text-red-500 text-sm">
+      Email is required and must be valid.
+    </div>
+
+    <label for="UserEmail" class="block mt-5 font-medium text-gray-700">
+      Password
+    </label>
+    <input
+      required
+      minlength="8"
+      type="password"
+      name="password"
+      #password="ngModel"
+      placeholder="*********"
+      [(ngModel)]="login.password"
+      class="mt-1 w-full border-2 rounded-md px-3 py-2 shadow-sm outline-none" />
+    <div
+      *ngIf="password.invalid && password.touched"
+      class="text-red-500 text-sm">
+      Password is required and must be at least 8 characters long.
+    </div>
+
+    <div class="flex justify-evenly gap-4 mt-4">
+      <button
+        type="submit"
+        class="inline-block rounded bg-green-600 px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-green-500">
+        Login
+      </button>
+      <button
+        type="reset"
+        class="inline-block rounded border border-current px-8 py-3 text-sm font-medium text-gray-600 transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:text-gray-500">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>
